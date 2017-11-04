@@ -8,39 +8,15 @@ export class Calculator extends React.Component {
             firstNumber: 0,
             secondNumber: 0,
             operator: '+',
-            result : 0
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
     }
 
     handleChange(e) {
         this.setState({
             [e.target.name] : e.target.value
         });
-    }
-
-    handleSubmit() {
-        const firstNum = parseInt(this.state.firstNumber);
-        const secondNum = parseInt(this.state.secondNumber);
-
-        switch (this.state.operator){
-            case '+' :
-                this.setState({result: firstNum + secondNum });
-                break;
-            case '-' :
-                this.setState({result: firstNum - secondNum });
-                break;
-            case '*' :
-                this.setState({result: firstNum * secondNum });
-                break;
-            case '/' :
-                this.setState({result: firstNum / secondNum });
-                break;
-
-        }
     }
 
     render() {
@@ -54,8 +30,9 @@ export class Calculator extends React.Component {
                     <option value='/'> /</option>
                 </select>
                 <input name='secondNumber' onChange={this.handleChange} value={this.state.secondNumber} type='number'/>
-                <button  onClick={this.handleSubmit}>=</button>
-                <input value={this.state.result} readOnly/>
+                <button  onClick={()=>
+                {this.props.onSubmit(this.state.firstNumber,this.state.secondNumber,this.state.operator)}}>=</button>
+                <input value={this.props.result} readOnly/>
             </div>
 
         )
