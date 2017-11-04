@@ -1,8 +1,11 @@
-
-import {applyMiddleware, createStore} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import {combineReducer} from "../reducers/index";
 import {logger, thunk} from "../middlewares/index";
 
-const store = createStore(combineReducer,applyMiddleware(logger,thunk));
+const store = createStore(combineReducer, {}, compose(
+    applyMiddleware(logger, thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+));
+
 
 export default store
