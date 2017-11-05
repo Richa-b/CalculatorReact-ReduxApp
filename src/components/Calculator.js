@@ -1,9 +1,7 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {getResult} from "../redux/actions/index";
 
 
-class Calculator extends React.Component {
+export class Calculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,27 +35,8 @@ class Calculator extends React.Component {
                 {onSubmit(firstNumber,secondNumber,operator)}}>=</button>
                 <input value={result} readOnly/>
             </div>
-
         )
-
     }
 }
 
 
-const mapStateToProps= (state,props) => {
-  return ({result : state.result})
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSubmit : (a,b,op) => dispatch(getResult(a,b,op))
-    }
-}
-const CalculatorContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Calculator)
-
-
-export  default CalculatorContainer
