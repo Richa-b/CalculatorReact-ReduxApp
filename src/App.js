@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Calculator} from "./Calculator";
-import store from "./redux/store/config";
-import {getResult} from "./redux/actions/index";
+import Calculator from "./Calculator";
 
 class App extends Component {
   render() {
@@ -13,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Calculator result= {this.props.value.result} onSubmit={(a,b,op) => store.dispatch(getResult(a,b,op))}/>
+        <Calculator/>
       </div>
     );
   }

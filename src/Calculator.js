@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {getResult} from "./redux/actions/index";
 
 
-export class Calculator extends React.Component {
+class Calculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,3 +42,22 @@ export class Calculator extends React.Component {
 
     }
 }
+
+
+const mapStateToProps= (state,props) => {
+  return ({result : state.result})
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSubmit : (a,b,op) => dispatch(getResult(a,b,op))
+    }
+}
+const CalculatorContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Calculator)
+
+
+export  default CalculatorContainer
