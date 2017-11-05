@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {getResult} from "./redux/actions/index";
+import {getResult} from "../redux/actions/index";
 
 
 class Calculator extends React.Component {
